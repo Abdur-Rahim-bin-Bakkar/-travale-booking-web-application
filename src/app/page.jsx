@@ -1,9 +1,10 @@
+import Banner from "@/components/HomePage/Banner";
 
 export default function Home() {
   return (
     <div className="">
-      <h1>this is main heading</h1>
-     
+      <Banner />
+
     </div>
   );
 }
