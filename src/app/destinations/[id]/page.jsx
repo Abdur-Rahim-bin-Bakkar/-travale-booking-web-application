@@ -1,3 +1,5 @@
+import { DeleteModal } from '@/components/Destination/DeleteModal';
+import { WithForm } from '@/components/Destination/EditDestinations';
 import { Button, Card } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,11 +12,15 @@ const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
     const res = await fetch(`http://localhost:5000/destination/${id}`);
     const data = await res.json()
-    console.log(data)
+    console.log(data._id,'id')
     return (
         <div className='max-w-11/12 mx-auto mt-10'>
             <div>
                 <Link href={'/destinations'}>Back To Destinations</Link>
+                <div className="">
+                    <WithForm data={data} />
+                    <DeleteModal id={data._id} />
+                </div>
             </div>
 
             <div className="mt-10">
