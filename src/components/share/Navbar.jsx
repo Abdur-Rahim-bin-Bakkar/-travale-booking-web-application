@@ -23,6 +23,11 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li>
+                            <Link className={path === '/add-des' ? 'text-[#15A1BF]' : ''} href="/add-des">
+                                ADD Destinations
+                            </Link>
+                        </li>
+                        <li>
                             <Link
                                 className={path === '/destinations' ? 'text-[#15A1BF]' : ''}
                                 href="/destinations"
