@@ -1,3 +1,5 @@
+import dns from "node:dns/promises";
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/share/Navbar";
@@ -29,7 +31,7 @@ export default function RootLayout({ children }) {
         <main className="min-h-screen container mx-auto">
           {children}
         </main>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
