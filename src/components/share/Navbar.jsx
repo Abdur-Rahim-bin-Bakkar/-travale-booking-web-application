@@ -1,13 +1,25 @@
 'use client'
 
+import { authClient } from '@/lib/auth-client';
+import { Button } from '@heroui/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
+// import { authClient } from "@/lib/auth-client"
 
 const Navbar = () => {
     const path = usePathname();
     const [open, setOpen] = useState(false);
 
+
+    const { data: session } = authClient.useSession()
+    console.log(session?.user, 'this is session')
+
+
+    const haldleSignOut = async () => {
+        await authClient.signOut();
+    }
     return (
         <div className="shadow px-3 font-semibold">
             <div className="min-h-15 flex items-center justify-between">
@@ -55,11 +67,17 @@ const Navbar = () => {
                 </div>
 
                 {/* desktop right menu */}
-                <ul className="hidden md:flex gap-5">
-                    <li><Link href="/profile">Profile</Link></li>
-                    <li><Link href="/login">Login</Link></li>
-                    <li><Link href="/signup">Sign Up</Link></li>
-                </ul>
+
+                {session ? <div className="hidden md:flex gap-5">
+                    {/* <Image src={session?.user?.img}></Image> */}
+                    <Button onClick={haldleSignOut}>Sign OUt</Button>
+                </div> :
+                    <ul className="hidden md:flex gap-5">
+                        <li><Link href="/profile">Profile</Link></li>
+                        <li><Link href="/login">Login</Link></li>
+                        <li><Link href="/signup">Sign Up</Link></li>
+                    </ul>}
+
 
                 {/* mobile button */}
                 <button
