@@ -1,6 +1,7 @@
+import BookingCard from '@/components/Destination/BookingCard';
 import { DeleteModal } from '@/components/Destination/DeleteModal';
 import { WithForm } from '@/components/Destination/EditDestinations';
-import { Button, Card } from '@heroui/react';
+import { Button, Card, DateField, Label, Description, FieldError } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -12,7 +13,7 @@ const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
     const res = await fetch(`http://localhost:5000/destination/${id}`);
     const data = await res.json()
-    console.log(data._id,'id')
+    console.log(data._id, 'id')
     return (
         <div className='max-w-11/12 mx-auto mt-10'>
             <div>
@@ -50,18 +51,7 @@ const DestinationDetailsPage = async ({ params }) => {
                         </div>
                     </div>
 
-                    <Card className='max-w-150 min-w-100'>
-                        <p className=' text-[#6C696D] '>Starting from</p>
-                        <h3 className='text-[#15A1BF] font-bold text-2xl'>${data.price}</h3>
-                        <p className=' text-[#6C696D] '>Per Person</p>
-
-                        <Link href={''} className=''><Button className={'w-full bg-[#15A1BF] rounded-md'}>Book Now</Button></Link>
-                        <div className="mt-3 space-y-4">
-                            <p className='flex items-center gap-2'><FaCheck className='font-thin text-[#1E9E35]' />Luxury beachfront accommodation</p>
-                            <p className='flex items-center gap-2'><FaCheck className='font-thin text-[#1E9E35]' />Luxury beachfront accommodation</p>
-                            <p className='flex items-center gap-2'><FaCheck className='font-thin text-[#1E9E35]' />Luxury beachfront accommodation</p>
-                        </div>
-                    </Card>
+                    <BookingCard data={data} />
                 </div>
             </div>
         </div>

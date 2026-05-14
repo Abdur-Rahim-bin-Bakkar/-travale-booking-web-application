@@ -14,7 +14,7 @@ const Navbar = () => {
 
 
     const { data: session } = authClient.useSession()
-    console.log(session?.user, 'this is session')
+    // console.log(session?.user, 'this is session')
 
 
     const haldleSignOut = async () => {
