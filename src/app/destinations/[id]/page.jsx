@@ -26,7 +26,7 @@ const DestinationDetailsPage = async ({ params }) => {
 
             <div className="mt-10">
 
-                <Image src={data.imageUrl} alt='destination image' width={800} height={500} className='w-full h-100 object-cover'></Image>
+                <Image src={data?.imageUrl} alt='destination image' width={800} height={500} className='w-full h-100 object-cover'></Image>
 
 
                 <div className="mt-6 md:flex gap-3 space-y-5">
